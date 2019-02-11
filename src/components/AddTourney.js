@@ -51,7 +51,7 @@ class AddTourney extends Component {
             date: '',
             name: '',
             location: '',
-            details: '',
+            details: ''
         })
     }
 
@@ -81,6 +81,7 @@ class AddTourney extends Component {
             type="text"
             placeholder="details"
             onChange={ (e) => this.handleDetails(e.target.value)}
+            value={this.state.details}
             />
 
             {/* Button sends info to TournamentManager- createTourney */}
