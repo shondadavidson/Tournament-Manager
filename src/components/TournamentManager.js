@@ -10,6 +10,7 @@ class TournamentManager extends Component {
         super();
 
         this.state = {
+            showEditFields: false,
             tournaments: [],
             date: '',
             name: '',
@@ -22,10 +23,14 @@ class TournamentManager extends Component {
         this.setEdit = this.setEdit.bind(this);
         this.updateTourney = this.updateTourney.bind(this)
         this.deleteTourney = this.deleteTourney.bind(this)
+        this.showEdit = this.showEdit.bind(this)
     };
 
     
-
+    showEdit(){
+        this.setState({showEditFields:true})
+        console.log('show edit', this.state.showEditFields)
+    }
 
 
     componentDidMount() {
@@ -37,9 +42,7 @@ class TournamentManager extends Component {
         })
     }
 
-    // searchBar(){
-    //     axios.get('/api/tournemnts').then(re)
-    // }
+   
 
     createTourney(date, name, location, details) {
         // console.log(date, name, location, details)
@@ -47,7 +50,11 @@ class TournamentManager extends Component {
             // console.log(res.data)
             this.setState({
                 tournaments: res.data,
-                
+                date: '',
+                name: '',
+                location: '',
+                entered: false,
+                details: ''
 
             })
         })
@@ -95,9 +102,10 @@ class TournamentManager extends Component {
                 })
             })
     }
-
+  
 
     render() {
+    
         const mappedTournaments = this.state.tournaments.map(tourney => {
             return (
             <TournamentSummary
@@ -106,17 +114,22 @@ class TournamentManager extends Component {
             setEdit={this.setEdit}
             updateTourney={this.updateTourney}
             deleteTourney={this.deleteTourney}
+            showEdit={this.showEdit}
             
             />
             )
         })
+
+    
         return(
             <div className="TournamentManager">
            
             {mappedTournaments}
 
            <div className="add-tourney">
-            <AddTourney createTourney={this.createTourney}
+            <AddTourney 
+            createTourney={this.createTourney}
+            setEdit={this.setEdit}
             />
 
             </div>

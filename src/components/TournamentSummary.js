@@ -8,6 +8,7 @@ class TournamentSummary extends Component {
         super(props);
 
         this.state = {
+            showEditFields: false,
             editing: false,
             date: '',
             name: '',
@@ -15,6 +16,8 @@ class TournamentSummary extends Component {
             details: ''
         }
     }
+
+    
     edit(id) {
         this.setState({
             editing: true
@@ -107,6 +110,8 @@ class TournamentSummary extends Component {
             <p className="explainer"> You can update one field or all fields.  To update fields type in the input box and click update.  To delete click delete. </p>
             <button className="delete-button"
             onClick={ () => this.props.deleteTourney(tourney.id)}>Delete</button>
+
+            {/* <button onClick={ () => this.props.showEdit()}>Show Edit Fields</button> */}
             
             </div>
         )

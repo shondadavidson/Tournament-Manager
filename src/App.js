@@ -9,25 +9,27 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      authenticated: true,  //turned off so I could edit
-      isHidden: false
+      authenticated: false, 
+      
+     
     }
   }
 
  login = () => {
-   this.setState({authenticated:true, isHidden:true })
+   this.setState({
+     authenticated: !this.state.authenticated
+
+   })
+   console.log('login', this.state.authenticated)
  }
 
- toggleHidden = () => {
-   this.setState({
-     isHidden: !this.state.isHidden
-   })
- }
+ 
 
   render() {
     return (
       <div className="App">
         <Header login={this.login}/>
+  
         {this.state.authenticated && <TournamentManager />}
         
           
