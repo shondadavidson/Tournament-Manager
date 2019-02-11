@@ -1,0 +1,18 @@
+.Login {
+text-align: right;
+margin: 30px;
+padding: 10px;
+background-color: #71D0F6;
+border-radius: 10px;
+
+    
+
+}
+ .Login:input {
+     font-size: 30px;
+ }
+
+ .Login:button {
+     font-size: 30px;
+ }
+

@@ -15,10 +15,5 @@ app.delete(`/api/tournament/:id`, tc.deleteTourney)  //need to verify in postman
 app.put( `/api/tournament/:id`, tc.updateTourney)  //need to verify in postman
 
 
-
-// app.get("/api", function(req, res){
-//     res.send("testing get")
-// })
-
 const PORT = 4000
 app.listen(PORT, () => console.log(`002 Server ready on port ${4000}`))

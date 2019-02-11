@@ -1,5 +1,7 @@
 import React, { Component }from 'react'
 import Details from './Details';
+import './TournamentSummary.css'
+
 
 class TournamentSummary extends Component {
     constructor(props){
@@ -23,8 +25,9 @@ class TournamentSummary extends Component {
             this.state.location, 
             this.state.details,
             id)
-            this.setState(
-                {date:'',
+            // Clears input boxes
+            this.setState({
+                date:'',
                 name: '',
                 location: '',
                 details: '',
@@ -52,9 +55,9 @@ class TournamentSummary extends Component {
         })
     }
 
-    handleEntered(val){
+    handleEntered(){
         this.setState({
-            entered: val
+            entered: true
         })
     }
 
@@ -64,6 +67,7 @@ class TournamentSummary extends Component {
         })
     }
 
+
     render() {
         // let {date, name, location, entered, details} 
         const {tourney} = this.props;
@@ -71,9 +75,10 @@ class TournamentSummary extends Component {
 
         return(
             <div className="TournamentSummary" > 
-            <p>Date: {tourney.date}</p>
-            <h3>Name: {tourney.name}</h3>
-            <p>Location: {tourney.location}</p>
+            <p className='date'>{tourney.date}</p>
+            <h3 className="name">{tourney.name}</h3>
+            <p className='location'>{tourney.location}</p>
+          
             <Details tourney={this.props.tourney} />
             <input type="text" 
             placeholder="date"
@@ -92,15 +97,16 @@ class TournamentSummary extends Component {
             />
             <input type="text"
             placeholder="details"
-            value={this.state.details}
             onChange={ (e) => this.handleDetails(e.target.value)}
+            value={this.state.details}
             />
-            {/* <button onClick={ () => this.props.createTourney(this.state.date, this.state.name, this.state.location, this.state.details)}>Create Tournament</button> */}
-            <button onClick={ () => this.edit(tourney.id)}>Update</button>
-            <button onClick={ () => this.props.deleteTourney(tourney.id)}>Delete</button>
-        
-            <p>- - - - - - - - - - - - </p>
-            
+           
+            <button className="update-button"
+            onClick={ () => this.edit(tourney.id)}>Update</button>
+           
+            <p className="explainer"> You can update one field or all fields.  To update fields type in the input box and click update.  To delete click delete. </p>
+            <button className="delete-button"
+            onClick={ () => this.props.deleteTourney(tourney.id)}>Delete</button>
             
             </div>
         )

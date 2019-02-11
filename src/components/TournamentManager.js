@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TournamentSummary from './TournamentSummary'
 import AddTourney from './AddTourney'
+import './TournamentManager.css'
 
 
 class TournamentManager extends Component {
@@ -29,24 +30,25 @@ class TournamentManager extends Component {
 
     componentDidMount() {
         axios.get('/api/tournaments').then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 tournaments: res.data
             })
         })
     }
 
+    // searchBar(){
+    //     axios.get('/api/tournemnts').then(re)
+    // }
+
     createTourney(date, name, location, details) {
-        console.log(date, name, location, details)
+        // console.log(date, name, location, details)
         axios.post('/api/tournament', {date, name, location, details}).then( res => { 
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 tournaments: res.data,
-                date: '',
-                name: '',
-                location: '',
-                entered: false,
-                details: ''
+                
+
             })
         })
     }
@@ -96,7 +98,6 @@ class TournamentManager extends Component {
 
 
     render() {
-        // const { date, name, location, entered, details } = this.state;
         const mappedTournaments = this.state.tournaments.map(tourney => {
             return (
             <TournamentSummary
@@ -105,22 +106,20 @@ class TournamentManager extends Component {
             setEdit={this.setEdit}
             updateTourney={this.updateTourney}
             deleteTourney={this.deleteTourney}
-            // deleteTourney={this.deleteTourney}
             
             />
             )
         })
         return(
             <div className="TournamentManager">
-            {/* <h1> hello my name is {this.state.tournament}</h1> */}  
-            {/* <h2>I manage tournaments</h2> */}
            
             {mappedTournaments}
 
-           
+           <div className="add-tourney">
             <AddTourney createTourney={this.createTourney}
-            
             />
+
+            </div>
             
             </div>
         )

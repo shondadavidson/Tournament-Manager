@@ -13,6 +13,7 @@ class AddTourney extends Component {
             details: ''
         }
     }
+
     handleDate(val) {
         console.log(`date worked`)
         this.setState({
@@ -44,16 +45,22 @@ class AddTourney extends Component {
         })
     }
 
-    
+    submit(){
+        this.props.createTourney(this.state.date, this.state.name, this.state.location, this.state.details)
+        this.setState({
+            date: '',
+            name: '',
+            location: '',
+            details: '',
+        })
+    }
 
     render() {
     
 
         return(
             <div className="AddTourney" > 
-            {/* {this.props.tourney ? <p>Date: {tourney.date}</p> : null }
-            {this.props.tourney ? <h3>Name: {tourney.name}</h3> : null }
-            {this.props.tourney ? <p>Location: {tourney.location}</p> : null } */}
+            
         
             <input type="text" 
             placeholder="date"
@@ -70,11 +77,17 @@ class AddTourney extends Component {
             onChange={ (e) => this.handleLocation(e.target.value)}
             value={this.state.location}
             />
-            <input type="text"
+            <input className='details' 
+            type="text"
             placeholder="details"
             onChange={ (e) => this.handleDetails(e.target.value)}
             />
-            <button onClick={ () => this.props.createTourney(this.state.date, this.state.name, this.state.location, this.state.details)}>Create Tournament</button>
+
+            {/* Button sends info to TournamentManager- createTourney */}
+
+            <button onClick={ () => this.submit()}>Create Tournament</button>
+
+           
             
         
             

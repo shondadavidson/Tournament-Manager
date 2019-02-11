@@ -1,0 +1,63 @@
+.TournamentSummary {
+    width: 40%;
+    margin: 1vw auto;
+    border: solid grey 1px;;
+    padding: 10px;
+    background: #fff;
+    
+
+    
+}
+
+.TournamentSummary:hover {
+    border: solid#0EC2F3 4px;
+}
+
+input {
+    border: solid 1px #30BCB9
+}
+
+.date {
+    color:#30BCB9;
+    size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+.name {
+    color: #11489E;
+    font-size: 26px;
+    font-family: 'Merienda One', cursive;
+
+}
+
+.location {
+    color: #0EC2F3;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
+
+Details {
+    color: 6FC7BA;
+    font-family: 'Lato', sans-serif;
+}
+
+.explainer {
+    font-size: 10px;
+}
+
+.delete-button {
+    border: 1px solid red
+}
+
+.delete-button:hover {
+    background-color: red;
+}
+
+.update-button {
+    background-color: #8CB53E;
+}
+
+.update-button:hover {
+    border: 2px solid black;
+}
+
