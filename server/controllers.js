@@ -57,6 +57,13 @@ module.exports = {
         });
         res.status(201).send(tournaments);
       },
+      searchForTourney: (req, res) => {
+          let tourneySearched = req.query.search
+          let filteredTourneys = tournaments.filter( (tourney) => {
+              return tourney.name.toUpperCase().includes(tourneySearched.toUpperCase())
+          })
+          res.status(200).send(filteredTourneys)
+      },
     
       deleteTourney: (req, res) => {
         console.log(req.params)

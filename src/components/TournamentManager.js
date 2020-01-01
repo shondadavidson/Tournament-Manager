@@ -34,14 +34,17 @@ class TournamentManager extends Component {
 
 
     componentDidMount() {
-        axios.get('/api/tournaments').then(res => {
-            // console.log(res.data)
-            this.setState({
-                tournaments: res.data
-            })
-        })
+        this.getTourney()
     }
 
+    getTourney = () => {
+        axios.get('/api/tournaments').then(res => {
+        // console.log(res.data)
+        this.setState({
+            tournaments: res.data
+        })
+    })
+}
    
 
     createTourney(date, name, location, details) {
@@ -102,6 +105,18 @@ class TournamentManager extends Component {
                 })
             })
     }
+
+    searchForTourney = (e) => {
+        console.log(e)
+        if(e.target.value === ""){
+            this.getTourney()
+            return
+        }
+        axios.get(`/api/searchForTourney?search=${e.target.value}`).then( (res) => {
+            this.setState({tournaments:res.data})
+        })
+    }
+    
   
 
     render() {
@@ -123,14 +138,16 @@ class TournamentManager extends Component {
     
         return(
             <div className="TournamentManager">
-           
-            {mappedTournaments}
+                <input className='search'
+                    placeholder='Filter Results'
+                    onChange={this.searchForTourney}/>
+                {mappedTournaments}
 
-           <div className="add-tourney">
-            <AddTourney 
-            createTourney={this.createTourney}
-            setEdit={this.setEdit}
-            />
+                <div className="add-tourney">
+                    <AddTourney 
+                        createTourney={this.createTourney}
+                        setEdit={this.setEdit}
+                    />
 
             </div>
             

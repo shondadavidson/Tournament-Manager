@@ -10,6 +10,7 @@ app.use(express.json());
 // app.use(express.static( __dirname + '/../public/build')) //will need once connect
 
 app.get( '/api/tournaments', tc.getTourneys )  //get works
+app.get( '/api/searchForTourney', tc.searchForTourney)
 app.post('/api/tournament', tc.createTourney)  //post works
 app.delete(`/api/tournament/:id`, tc.deleteTourney)  //need to verify in postman
 app.put( `/api/tournament/:id`, tc.updateTourney)  //need to verify in postman
